@@ -139,10 +139,11 @@ function displayCategoriesFilters() {
     categoryFilters.appendChild(optionDiv);
 
     // Add event listener to radio button
-    radio.addEventListener("change", () => {
+    radio.addEventListener("change", (e) => {
       if (radio.checked) {
+        console.log(e.target.value);
         // selectedCategory = category.slug;
-        filterByCategory(category.slug);
+        filterByCategory(e.target.value);
       }
     });
   });
