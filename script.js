@@ -118,7 +118,7 @@ category API response = [
 }.......]
 */
 function displayCategoriesFilters() {
-  // categoryFilters.innerHTML = "";
+  categoryFilters.innerHTML = "";
   categories.forEach((category) => {
     const categoryId = category.slug;
     const optionDiv = document.createElement("div");
@@ -140,11 +140,15 @@ function displayCategoriesFilters() {
 
     // Add event listener to radio button
     radio.addEventListener("change", (e) => {
-      if (radio.checked) {
-        console.log(e.target.value);
-        // selectedCategory = category.slug;
-        filterByCategory(e.target.value);
-      }
+      console.log(radio.checked);
+      // if (radio.checked) {
+      //   console.log(radio.checked);
+      //   console.log(e.target.value);
+      //   // selectedCategory = category.slug;
+      //   filterByCategory(e.target.value);
+      // }
+      console.log(e.target.value);
+      filterByCategory(e.target.value);
     });
   });
 }
