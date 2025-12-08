@@ -308,7 +308,7 @@ function createRatingStars(rating) {
   );
 }
 
-// Set up event listeners for a product card
+// Set up event listeners for a product card Here we are accessing the showDescBtn and all other HTML elements by scoped HTML element access method
 function setupProductCardEvents(card, productId) {
   // Show description button
   const showDescBtn = card.querySelector(
@@ -318,8 +318,9 @@ function setupProductCardEvents(card, productId) {
 
   showDescBtn.addEventListener("click", () => {
     descDiv.style.display = "block";
-    showDescBtn.textContent = "Hide Description";
-    showDescBtn.classList.add("active");
+    // showDescBtn.textContent = "Hide Description";
+    showDescBtn.style.display = "none";
+    // showDescBtn.classList.add("active");
   });
 
   // Less description button
@@ -328,8 +329,9 @@ function setupProductCardEvents(card, productId) {
   );
   lessDescBtn.addEventListener("click", () => {
     descDiv.style.display = "none";
-    showDescBtn.textContent = "Show Description";
-    showDescBtn.classList.remove("active");
+    // showDescBtn.textContent = "Show Description";
+    // showDescBtn.classList.remove("active");
+    showDescBtn.style.display = "block";
   });
 
   // Add to cart button
