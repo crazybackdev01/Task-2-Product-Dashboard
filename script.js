@@ -239,7 +239,9 @@ function createProductCard(product) {
                         <button class="desc-btn" data-product-id="${
                           product.id
                         }">Show Description</button>
-                        <button class="add-cart-btn">Add to Cart</button>
+                        <button class="add-cart-btn" data-product-id="${
+                          product.id
+                        }">Add to Cart</button>
                     </div>
                 </div>
                 <div class="product-description" id="desc-${
@@ -301,49 +303,59 @@ function createRatingStars(rating) {
 
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating % 1 >= 0.5;
+  //½ "½"
   const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
-
   return (
-    "★".repeat(fullStars) + (hasHalfStar ? "½" : "") + "☆".repeat(emptyStars)
+    "★".repeat(fullStars) + (hasHalfStar ? "1/2" : "") + "☆".repeat(emptyStars)
   );
 }
 
 // Set up event listeners for a product card Here we are accessing the showDescBtn and all other HTML elements by scoped HTML element access method
 function setupProductCardEvents(card, productId) {
-  // Show description button
+  // this will select that showDesc btn which has desc-btn class and data-product-id = productId
   const showDescBtn = card.querySelector(
     `.desc-btn[data-product-id="${productId}"]`
   );
   const descDiv = card.querySelector(`#desc-${productId}`);
+  console.log(descDiv);
+  showDescBtn.addEventListener("click", (e) => {
+    // e.stopPropagation(); // Prevent event from bubbling up
 
-  showDescBtn.addEventListener("click", () => {
+    console.log(e.target);
+    console.log(e.currentTarget);
+    console.log(descDiv);
     descDiv.style.display = "block";
-    // showDescBtn.textContent = "Hide Description";
-    showDescBtn.style.display = "none";
-    // showDescBtn.classList.add("active");
+    showDescBtn.textContent = "Hide Description";
+    // showDescBtn.style.display = "none";
+    showDescBtn.classList.add("active");
   });
 
-  // Less description button
+  // Less description button selection similar to the selection of showDescBtn
   const lessDescBtn = card.querySelector(
     `.less-desc-btn[data-product-id="${productId}"]`
   );
   lessDescBtn.addEventListener("click", () => {
+    // e.stopPropagation(); // Prevent event from bubbling up
+
     descDiv.style.display = "none";
-    // showDescBtn.textContent = "Show Description";
-    // showDescBtn.classList.remove("active");
-    showDescBtn.style.display = "block";
+    showDescBtn.textContent = "Show Description";
+    showDescBtn.classList.remove("active");
+    // showDescBtn.style.display = "block";
   });
 
   // Add to cart button
-  const addCartBtn = card.querySelector(".add-cart-btn");
-  addCartBtn.addEventListener("click", () => {
+  const addCartBtn = card.querySelector(
+    `.add-cart-btn[data-product-id="${productId}"]`
+  );
+  addCartBtn.addEventListener("click", (e) => {
+    console.log(e.target.dataset.productId);
     alert(
       `Added "${card.querySelector(".product-title").textContent}" to cart!`
     );
   });
 }
 
-// Set up event listeners for controls
+// Set up event listeners for controls section of the main section page such as search button, clear button, sorting buttons, category buttons and clear buttons.
 function setupEventListeners() {
   // Search functionality
   searchBtn.addEventListener("click", executeSearchEvent);
@@ -415,8 +427,8 @@ async function executeSearchEvent() {
 
   if (!query) {
     alert("Enter something for search!");
-    // displayedProducts = [...allProducts];
-    // renderProducts(displayedProducts);
+    displayedProducts = [...allProducts];
+    renderProducts(displayedProducts);
     return;
   }
 
