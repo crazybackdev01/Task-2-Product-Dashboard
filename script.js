@@ -438,12 +438,12 @@ async function executeSearchEvent() {
       `https://dummyjson.com/products/search?q=${query}&limit=${limit}`
     );
     const data = await response.json();
-    displayedProducts = data.products;
-    renderProducts(displayedProducts);
 
     if (data.products.length === 0) {
       showMessage(`No products found for "${searchTerm}"`);
     }
+    displayedProducts = data.products;
+    renderProducts(displayedProducts);
   } catch (error) {
     console.error("Error searching products:", error);
     showMessage("Error searching products. Please try again.");
