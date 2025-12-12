@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header with cart -->
+      <div class="header">
+        <h1>Products Dashboard</h1>
+      </div>
+      <!-- Search Section -->
+      <div class="controls-section">
+        <div class="search-section">
+          <input
+            type="text"
+            class="search-input"
+            id="searchInput"
+            placeholder="Search for products..."
+          />
+          <button class="search-btn" id="searchBtn">Search</button>
+          <button class="clear-btn" id="clearSearchBtn">Clear Search</button>
+        </div>
+
+        <!-- Sort Buttons -->
+        <div class="sort-section">
+          <button class="sort-btn" id="sortPriceLowHigh">
+            Sort By Price Low to High
+          </button>
+          <button class="sort-btn" id="sortPriceHighLow">
+            Sort By Price High to Low
+          </button>
+          <button class="sort-btn" id="sortRatingHighLow">
+            Sort By Rating (High to Low)
+          </button>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <!-- Category Filter Sidebar -->
+        <div class="sidebar">
+          <h3>Filter by Category</h3>
+          <div id="categoryFilters"></div>
+          <button
+            class="clear-category-btn"
+            id="clearCategoryBtn"
+            style="margin-top: 15px; width: 100%"
+          >
+            Clear Category Filter
+          </button>
+        </div>
+        <!-- Product Display Area -->
+        <div class="product-container">
+          <div id="productGrid" class="product-grid">
+            <!-- Products will be dynamically loaded here -->
+          </div>
+          <div id="message" class="message" style="display: none">
+            No products found. Try a different search or filter.
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

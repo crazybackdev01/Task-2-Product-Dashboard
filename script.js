@@ -325,9 +325,9 @@ function setupProductCardEvents(card, productId) {
     console.log(e.currentTarget);
     console.log(descDiv);
     descDiv.style.display = "block";
-    showDescBtn.textContent = "Hide Description";
-    // showDescBtn.style.display = "none";
-    showDescBtn.classList.add("active");
+    // showDescBtn.textContent = "Hide Description";
+    showDescBtn.style.display = "none";
+    // showDescBtn.classList.add("active");
   });
 
   // Less description button selection similar to the selection of showDescBtn
@@ -340,7 +340,7 @@ function setupProductCardEvents(card, productId) {
     descDiv.style.display = "none";
     showDescBtn.textContent = "Show Description";
     showDescBtn.classList.remove("active");
-    // showDescBtn.style.display = "block";
+    showDescBtn.style.display = "block";
   });
 
   // Add to cart button
